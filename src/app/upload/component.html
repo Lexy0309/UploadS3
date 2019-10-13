@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="upload">
+    <h2 class="section-title text-center">Upload Files</h2>
+    <label class="btn btn-primary file-input-btn">
+      Add files
+      <input type="file" hidden name="files[]" multiple="" type="file" (change)="fileChangeEvent($event)">
+    </label>
+    <button type="button" class="btn btn-success" [disabled]="!files.length" (click)="uploadAll()">Upload all</button>
+    <button type="button" class="btn btn-warning" [disabled]="!files.length" (click)="cancelAll()">Cancel all</button>
+    <button type="button" class="btn btn-danger" [disabled]="!files.length" (click)="clearAll()">Clear all</button>
+    <a [routerLink]="['/files']" class="btn btn-link" role="button">Downloads</a>
+    <div class="files previews">
+      <app-file-upload *ngFor="let file of files; let oddRow=odd;" [oddRow]="oddRow" [fileObject]="file"></app-file-upload>
+    </div>
+</div>
+<app-footer></app-footer>
